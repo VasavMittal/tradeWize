@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trading Institute</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="top-header">
+    <div class="container">
+        <img src="images/logo.jpg" alt="Logo" class="logo">
+    </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+    <picture>
+        <source media="(max-width:768px)" srcset="images/Banner-Mob-1.png">
+        <img src="images/Banner-Web.png" alt="Hero Banner">
+    </picture>
+    <a href="#" class="hero-btn">Learn More</a>
+</section>
+
+<!-- ================= KEY FIGURES ================= -->
+<section class="key-figures">
+    <picture>
+        <source media="(max-width:768px)" srcset="images/keyfig-mob.png">
+        <img src="images/Frame-Desktop1.png" alt="Key Figures">
+    </picture>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="testimonials">
+    <div class="testimonial-title">
+        <picture>
+            <source media="(max-width:768px)" srcset="images/testimonials-title-mobile.png">
+            <img src="images/testimonials-title-desktop.png" alt="Testimonials">
+        </picture>
+    </div>
+
+    <div class="main-video">
+        <video controls>
+            <source src="videos/main.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="video-grid">
+        <video controls poster="images/v1.png"><source src="videos/v1.mp4"></video>
+        <video controls poster="images/v2.png"><source src="videos/v2.mp4"></video>
+        <video controls poster="images/v3.png"><source src="videos/v3.mp4"></video>
+        <video controls poster="images/v4.png"><source src="videos/v4.mp4"></video>
+    </div>
+
+    <div class="testimonial-btn">
+        <a href="#" class="btn-primary">Join Now</a>
+    </div>
+</section>
+
+<!-- ================= PERSONALISED ================= -->
+<section class="personal-section">
+    <div class="personal-title">
+        <picture>
+            <source media="(max-width:768px)" srcset="images/personal-title-mobile-1.png">
+            <img src="images/personal-title-desktop.png" alt="">
+        </picture>
+    </div>
+
+    <div class="personal-content">
+        <picture>
+            <source media="(max-width:768px)" srcset="images/personal-content-mobile-1.png">
+            <img src="images/personal-content-desktop-1.png" alt="">
+        </picture>
+    </div>
+
+    <div class="personal-btn">
+        <a href="#" class="btn-primary">Apply Now</a>
+    </div>
+</section>
+
+<!-- ================= JOURNEY ================= -->
+<section class="journey-section">
+    <div class="journey-title">
+        <picture>
+            <source media="(max-width:768px)" srcset="images/journey-title-mobile.png">
+            <img src="images/journey-title-desktop.png" alt="">
+        </picture>
+    </div>
+
+    <div class="journey-cards">
+        <div class="journey-card">
+            <img src="images/journey-card-1.png" alt="">
+        </div>
+        <div class="journey-card">
+            <img src="images/journey-card-2.png" alt="">
+        </div>
+    </div>
+</section>
+
+<!-- ================= MENTOR ================= -->
+<section class="mentor-section">
+    <div class="mentor-content">
+        <picture>
+            <source media="(max-width:768px)" srcset="images/mentor-mobile.png">
+            <img src="images/mentor-desktop.png" alt="">
+        </picture>
+    </div>
+
+    <div class="mentor-btn">
+        <a href="#" class="btn-primary">Apply Now</a>
+    </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section class="gallery-section">
+    <h2 class="gallery-title">Gallery</h2>
+
+    <div class="gallery-wrapper">
+        <button class="gallery-btn prev">&#10094;</button>
+
+        <div class="gallery-track">
+            <div class="gallery-card"><img src="images/gallery1.jpg"></div>
+            <div class="gallery-card"><img src="images/gallery2.jpeg"></div>
+            <div class="gallery-card"><img src="images/gallery3.jpg"></div>
+            <div class="gallery-card"><img src="images/gallery4.jpeg"></div>
+            <div class="gallery-card"><img src="images/gallery5.jpeg"></div>
+            <div class="gallery-card"><img src="images/gallery6.jpeg"></div>
+            <div class="gallery-card"><img src="images/gallery7.jpg"></div>
+            <div class="gallery-card"><img src="images/gallery8.jpeg"></div>
+            <div class="gallery-card"><img src="images/gallery9.jpg"></div>
+            <div class="gallery-card"><img src="images/gallery10.jpeg"></div>
+            <div class="gallery-card"><img src="images/gallery11.jpeg"></div>
+        </div>
+
+        <button class="gallery-btn next">&#10095;</button>
+    </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+    <picture>
+        <source media="(max-width:768px)" srcset="images/footer-mobile.png">
+        <img src="images/footer-desktop.png" alt="">
+    </picture>
+</footer>
+
+<script>
+const track = document.querySelector('.gallery-track');
+const nextBtn = document.querySelector('.next');
+const prevBtn = document.querySelector('.prev');
+
+nextBtn.addEventListener('click', () => {
+    track.scrollBy({ left: track.clientWidth, behavior: 'smooth' });
+});
+
+prevBtn.addEventListener('click', () => {
+    track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' });
+});
+</script>
+
+</body>
+</html>
