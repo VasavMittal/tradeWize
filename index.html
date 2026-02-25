@@ -54,11 +54,41 @@ href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.
     </div>
 
     <div class="video-grid">
-        <video controls poster="images/v1.png"><source src="videos/v1.mp4"></video>
-        <video controls poster="images/v2.png"><source src="videos/v2.mp4"></video>
-        <video controls poster="images/v3.png"><source src="videos/v3.mp4"></video>
-        <video controls poster="images/v4.png"><source src="videos/v4.mp4"></video>
+
+        <!-- CARD 1 -->
+        <div class="video-card" data-video="j3i3f63r8n">
+            <img src="images/v1.png" alt="Raman Painulli" class="video-thumb">
+            <div class="video-overlay"></div>
+            <div class="play-icon">&#9658;</div>
+            <div class="video-name">Raman Painulli</div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="video-card" data-video="izym15ke1f">
+            <img src="images/v2.png" alt="Parthasarthy" class="video-thumb">
+            <div class="video-overlay"></div>
+            <div class="play-icon">&#9658;</div>
+            <div class="video-name">Parthasarthy</div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="video-card" data-video="cob1higlyi">
+            <img src="images/v3.png" alt="Priyesh" class="video-thumb">
+            <div class="video-overlay"></div>
+            <div class="play-icon">&#9658;</div>
+            <div class="video-name">Priyesh</div>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="video-card" data-video="mvxxc7tegn">
+            <img src="images/v4.png" alt="Jacinto Sims" class="video-thumb">
+            <div class="video-overlay"></div>
+            <div class="play-icon">&#9658;</div>
+            <div class="video-name">Jacinto Sims</div>
+        </div>
+
     </div>
+
 
     <div class="testimonial-btn">
         <button class="btn-primary" data-bs-toggle="modal" data-bs-target="#leadFormModal">Join Now</button>
@@ -390,30 +420,6 @@ href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.
     </div>
 </section>
 
-<!-- ================= GALLERY ================= -->
-<section class="gallery-section">
-    <h2 class="gallery-title">Gallery</h2>
-
-    <div class="gallery-wrapper">
-        <button class="gallery-btn prev">&#10094;</button>
-
-        <div class="gallery-track">
-            <div class="gallery-card"><img src="images/gallery1.jpg"></div>
-            <div class="gallery-card"><img src="images/gallery2.jpeg"></div>
-            <div class="gallery-card"><img src="images/gallery3.jpg"></div>
-            <div class="gallery-card"><img src="images/gallery4.jpeg"></div>
-            <div class="gallery-card"><img src="images/gallery5.jpeg"></div>
-            <div class="gallery-card"><img src="images/gallery6.jpeg"></div>
-            <div class="gallery-card"><img src="images/gallery7.jpg"></div>
-            <div class="gallery-card"><img src="images/gallery8.jpeg"></div>
-            <div class="gallery-card"><img src="images/gallery9.jpg"></div>
-            <div class="gallery-card"><img src="images/gallery10.jpeg"></div>
-            <div class="gallery-card"><img src="images/gallery11.jpeg"></div>
-        </div>
-
-        <button class="gallery-btn next">&#10095;</button>
-    </div>
-</section>
 <!-- ================= FAQ SECTION ================= -->
 <section class="faq-section">
 
@@ -571,6 +577,31 @@ href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.
         <button class="btn-primary" data-bs-toggle="modal" data-bs-target="#leadFormModal">Apply Now</button>
     </div>
 
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section class="gallery-section">
+    <h2 class="gallery-title">Gallery</h2>
+
+    <div class="gallery-wrapper">
+        <button class="gallery-btn prev">&#10094;</button>
+
+        <div class="gallery-track">
+            <div class="gallery-card"><img src="images/gallery1.jpg"></div>
+            <div class="gallery-card"><img src="images/gallery2.jpeg"></div>
+            <div class="gallery-card"><img src="images/gallery3.jpg"></div>
+            <div class="gallery-card"><img src="images/gallery4.jpeg"></div>
+            <div class="gallery-card"><img src="images/gallery5.jpeg"></div>
+            <div class="gallery-card"><img src="images/gallery6.jpeg"></div>
+            <div class="gallery-card"><img src="images/gallery7.jpg"></div>
+            <div class="gallery-card"><img src="images/gallery8.jpeg"></div>
+            <div class="gallery-card"><img src="images/gallery9.jpg"></div>
+            <div class="gallery-card"><img src="images/gallery10.jpeg"></div>
+            <div class="gallery-card"><img src="images/gallery11.jpeg"></div>
+        </div>
+
+        <button class="gallery-btn next">&#10095;</button>
+    </div>
 </section>
 
 <!-- ================= FOOTER ================= -->
@@ -900,6 +931,24 @@ document.addEventListener("DOMContentLoaded", function () {
     const modal = document.getElementById("leadFormModal");
     modal.addEventListener("shown.bs.modal", function () {
         document.querySelector('input[name="fullName"]').focus();
+    });
+
+});
+document.querySelectorAll('.video-card').forEach(card => {
+
+    card.addEventListener('click', function () {
+
+        const videoId = this.getAttribute('data-video');
+
+        this.innerHTML = `
+            <div class="video-wrapper">
+                <iframe src="https://fast.wistia.net/embed/iframe/${videoId}?autoplay=1"
+                    allow="autoplay; fullscreen"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        `;
+
     });
 
 });
