@@ -310,27 +310,21 @@ body {
         margin-bottom: 30px;
     }
 
-    .play-icon {
-        width: 55px;
-        height: 55px;
-        font-size: 22px;
-    }
-
     .video-name {
         font-size: 14px;
         padding: 8px 18px;
     }
 
     .play-icon {
-    width: 65px;
-    height: 65px;
-}
+        width: 65px;
+        height: 65px;
+    }
 
-.play-icon::before {
-    border-left: 14px solid #1a2a6c;
-    border-top: 9px solid transparent;
-    border-bottom: 9px solid transparent;
-}
+    .play-icon::before {
+        border-left: 14px solid #1a2a6c;
+        border-top: 9px solid transparent;
+        border-bottom: 9px solid transparent;
+    }
 }
 /* ================= PERSONALISED SECTION ================= */
 
