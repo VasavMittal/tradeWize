@@ -1,5 +1,5 @@
 /* RESET */
-* {
+html, body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -41,8 +41,8 @@ body {
 /* CTA Button Position (adjust based on design) */
 .hero-btn {
     position: absolute;
-    left: 8%;
-    bottom: 20%;
+    left: 4%;
+    bottom: 30% !important;
     background: #ffc107;
     padding: 12px 26px;
     border-radius: 6px;
@@ -233,6 +233,107 @@ body {
     }
 }
 
+/* ================= REVIEWS SECTION ================= */
+
+.reviews-section {
+    padding: 40px 0;
+    text-align: center;
+}
+
+/* ---------------- TITLE ---------------- */
+
+.reviews-title img {
+    width: 90%;
+    max-width: 600px;
+    margin-bottom: 50px;
+}
+
+/* ---------------- CARDS GRID ---------------- */
+
+.reviews-wrapper {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px;
+}
+
+/* Card Image */
+.review-card img {
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+}
+
+/* Hidden Cards */
+.hidden {
+    display: none;
+}
+
+/* ---------------- BUTTONS ---------------- */
+
+.reviews-buttons {
+    margin-top: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;               /* small gap */
+    flex-wrap: nowrap;      /* never stack */
+}
+
+/* Override ONLY inside reviews section */
+.reviews-section .btn-primary,
+.reviews-section .btn-secondary {
+    margin: 0 !important;      /* remove global auto margin */
+    display: inline-block;     /* prevent block behavior */
+    min-width: 150px;
+    padding: 12px 24px;
+    font-size: 15px;
+    white-space: nowrap;
+}
+
+/* Secondary Button Style */
+.reviews-section .btn-secondary {
+    background: #ffc107;
+    color: #0a2342;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.reviews-section .btn-secondary:hover {
+    background: #e0a800;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+
+    .reviews-wrapper {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .reviews-buttons {
+        gap: 6px;  /* keep tight */
+    }
+
+    .reviews-section .btn-primary,
+    .reviews-section .btn-secondary {
+        min-width: 130px;
+        padding: 10px 18px;
+        font-size: 14px;
+    }
+
+    .reviews-title img {
+        width: 95%;
+        margin-bottom: 35px;
+    }
+}
+
 /* ================= JOURNEY SECTION ================= */
 
 .journey-section {
@@ -287,6 +388,95 @@ body {
         gap: 25px;
     }
 }
+
+/* ================= GOOGLE REVIEWS SECTION ================= */
+
+.google-reviews-section {
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Title */
+.google-reviews-title img {
+    width: 90%;
+    max-width: 600px;
+    margin-bottom: 50px;
+}
+
+/* Grid */
+.google-reviews-wrapper {
+    width: 90%;
+    max-width: 1400px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 per row desktop */
+    gap: 30px;
+}
+
+/* Card */
+.google-review-card img {
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+}
+
+/* Buttons */
+.google-reviews-buttons {
+    margin-top: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+}
+
+/* Scope buttons only here */
+.google-reviews-section .btn-primary,
+.google-reviews-section .btn-secondary {
+    margin: 0 !important;
+    display: inline-block;
+    min-width: 150px;
+    padding: 12px 24px;
+    font-size: 15px;
+    white-space: nowrap;
+}
+
+/* Secondary */
+.google-reviews-section .btn-secondary {
+    background: #ffc107;
+    color: #0a2342;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.google-reviews-section .btn-secondary:hover {
+    background: #e0a800;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    .google-reviews-wrapper {
+        grid-template-columns: 1fr; /* 1 per row */
+        gap: 22px;
+    }
+
+    .google-reviews-section .btn-primary,
+    .google-reviews-section .btn-secondary {
+        min-width: 130px;
+        padding: 10px 18px;
+        font-size: 14px;
+    }
+
+    .google-reviews-title img {
+        width: 95%;
+        margin-bottom: 35px;
+    }
+}
+
 /* ================= MENTOR SECTION ================= */
 
 .mentor-section {
@@ -348,15 +538,13 @@ body {
 
 /* ================= GALLERY SECTION ================= */
 
-/* ================= GALLERY SECTION ================= */
-
 .gallery-section {
     padding: 20px 0;
     text-align: center;
 }
 
 .gallery-title {
-    font-size: 36px;
+    font-size: 86px;
     color: #17235F;
     font-weight: 700;
     margin-bottom: 50px;
@@ -460,6 +648,130 @@ body {
         right: -20px;
     }
 }
+
+/* ================= FAQ SECTION ================= */
+
+.faq-section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+/* ---------- TITLE ---------- */
+
+.faq-title img {
+    width: 90%;
+    max-width: 600px;
+    margin-bottom: 50px;
+}
+
+/* ---------- WRAPPER ---------- */
+
+.faq-wrapper {
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+}
+
+/* ---------- ITEM ---------- */
+
+.faq-item {
+    margin-bottom: 18px;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 0;                 /* IMPORTANT */
+    background: transparent;    /* no white block */
+}
+
+/* ---------- QUESTION ---------- */
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+    background: #ffffff;       /* grey only for question */
+}
+
+/* Question Image */
+/* Question Image Control */
+.faq-question picture,
+.faq-question img {
+    width: auto;              /* don't stretch full */
+    max-width: 85%;           /* control visual size */
+    height: auto;
+    display: block;
+}
+
+/* Toggle */
+.faq-toggle {
+    font-size: 22px;
+    font-weight: bold;
+    color: #17235F;
+    margin-left: 15px;
+}
+
+/* ---------- ANSWER ---------- */
+
+.faq-answer {
+    display: none;
+    padding: 0;                 /* NO padding */
+    margin: 0;
+    background: transparent;    /* no white bg */
+}
+
+/* Remove ALL max-width limits */
+.faq-answer picture,
+.faq-answer img {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    height: auto;
+}
+
+/* ---------- VIDEO ---------- */
+
+.faq-video {
+    width: 90%;
+    max-width: 900px;
+    margin: 60px auto 40px;
+}
+
+.faq-video video {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* ---------- BUTTON ---------- */
+
+.faq-btn {
+    margin-top: 20px;
+}
+
+.faq-section .btn-primary {
+    margin: 0 !important;
+    display: inline-block;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width:768px) {
+
+    .faq-title img {
+        width: 95%;
+        margin-bottom: 35px;
+    }
+
+    .faq-question {
+        padding: 16px;
+    }
+
+    /* VERY IMPORTANT: No padding here */
+    .faq-answer {
+        padding: 0;
+    }
+
+}
 /* ================= FOOTER ================= */
 
 .site-footer {
@@ -477,4 +789,83 @@ body {
 .personal-btn,
 .mentor-btn {
     margin: 40px 0; 
+}
+
+/* ================= MODAL STYLING ================= */
+
+.modal-content {
+    border-radius: 10px;
+    border: none;
+}
+
+.modal-header {
+    background: #15225d;
+    color: #fff;
+}
+
+.modal-title {
+    font-weight: 600;
+}
+
+.modal-body {
+    max-height: 75vh;
+    overflow-y: auto;
+}
+
+.form-control,
+.form-select {
+    padding: 10px 12px;
+    font-size: 15px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    box-shadow: none;
+    border-color: #15225d;
+}
+
+.btn-success {
+    background-color: #198754;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #157347;
+}
+
+/* ================= FIX INTL TEL INPUT ================= */
+
+.iti {
+    position: relative;
+    width: 100%;
+}
+
+.iti__country-list {
+    list-style: none !important;
+    margin: 0;
+    padding: 0;
+    z-index: 9999;
+}
+
+.iti__country {
+    display: flex;
+    align-items: center;
+}
+
+.iti__flag {
+    margin-right: 8px;
+}
+
+.iti--allow-dropdown input {
+    padding-left: 90px !important;
+}
+
+@media (max-width: 576px) {
+    .modal-dialog {
+        margin: 10px;
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
 }
