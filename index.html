@@ -715,6 +715,34 @@ href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.
   </div>
 </div>
 
+<div id="loader" style="
+display:none;
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:#ffffffcc;
+z-index:9999;
+justify-content:center;
+align-items:center;">
+  <div class="spinner-border text-primary"></div>
+</div>
+
+<div class="modal fade" id="thankYouModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center p-4">
+      <h4 class="mb-3">Thank You!</h4>
+      <p class="mb-4">
+        Thank you for your interest.  
+        Our team will stay in touch with you.
+      </p>
+      <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+        Close
+      </button>
+    </div>
+  </div>
+</div>
+
+
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -877,61 +905,149 @@ faqItems.forEach(item => {
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    const phoneInput = document.querySelector("#whatsappNumber");
+  const form = document.getElementById("studentForm");
+  const loader = document.getElementById("loader");
+  const phoneInput = document.querySelector("#whatsappNumber");
 
-    const iti = window.intlTelInput(phoneInput, {
-        initialCountry: "auto",
-        geoIpLookup: function(callback) {
-            fetch("https://ipapi.co/json")
-                .then(res => res.json())
-                .then(data => callback(data.country_code))
-                .catch(() => callback("us"));
-        },
-        separateDialCode: true,
-        preferredCountries: ["ae", "in", "us", "gb"],
-    });
+  const iti = window.intlTelInput(phoneInput, {
+    initialCountry: "auto",
+    geoIpLookup: function(callback) {
+      fetch("https://ipapi.co/json")
+        .then(res => res.json())
+        .then(data => callback(data.country_code))
+        .catch(() => callback("us"));
+    },
+    separateDialCode: true,
+    preferredCountries: ["ae","in","us","gb"],
+  });
 
-    const form = document.getElementById("studentForm");
+  form.addEventListener("submit", async function (e) {
 
-    form.addEventListener("submit", function (event) {
+    e.preventDefault();
 
-        let isValid = true;
+    let isValid = true;
 
-        // Phone validation
-        if (!iti.isValidNumber()) {
-            phoneInput.classList.add("is-invalid");
-            isValid = false;
-        } else {
-            phoneInput.classList.remove("is-invalid");
-        }
+    if (!iti.isValidNumber()) {
+      phoneInput.classList.add("is-invalid");
+      isValid = false;
+    } else {
+      phoneInput.classList.remove("is-invalid");
+    }
 
-        // Bootstrap validation
-        if (!form.checkValidity()) {
-            isValid = false;
-        }
+    if (!form.checkValidity()) {
+      isValid = false;
+    }
 
-        if (!isValid) {
-            event.preventDefault();
-            event.stopPropagation();
-        } else {
+    if (!isValid) {
+      form.classList.add("was-validated");
+      return;
+    }
 
-            // Get full international number
-            const fullNumber = iti.getNumber();
-            console.log("Full Number:", fullNumber);
+    loader.style.display = "flex";
 
-            // Here you can send AJAX request
+    try {
 
-        }
+      const formData = new FormData(form);
 
-        form.classList.add("was-validated");
+      const fullName = formData.get("fullName");
+      const email = formData.get("emailId");
+      const classPref = formData.get("classPref");
+      const connectTime = formData.get("connectTime");
+      const investmentChoice = formData.get("investmentConsent");
+      const whatsappFull = iti.getNumber();
+      const pageUrl = window.location.href;
 
-    });
+      const nameParts = fullName.split(" ");
+      const monthlyIncome = 0;
 
-    // Auto focus first input
-    const modal = document.getElementById("leadFormModal");
-    modal.addEventListener("shown.bs.modal", function () {
-        document.querySelector('input[name="fullName"]').focus();
-    });
+      /* ---------------- GOOGLE SHEET ---------------- */
+
+      const googleData = new URLSearchParams();
+      googleData.append("Timestamp", new Date().toLocaleString());
+      googleData.append("Page URL", pageUrl);
+      googleData.append("Full Name", fullName);
+      googleData.append("WhatsApp Number", whatsappFull);
+      googleData.append("Email ID", email);
+      googleData.append("Class Preference", classPref);
+      googleData.append("Connect Time", connectTime);
+      googleData.append(
+        "Monthly Income",
+        investmentChoice === "yes" ? "Yes" : "No"
+      );
+
+      fetch("https://script.google.com/macros/s/AKfycbzUSyqwgjhUIRrsLBTZy3woTOKZEkVXHidCvy-2q2stCD0Y7edzrRQLCSdEwp8qFs1V/exec", {
+        method: "POST",
+        body: googleData
+      }).catch(console.error);
+
+      /* ---------------- WP LOGGER ---------------- */
+
+      fetch("https://trading.tradewize.ae/wp-admin/admin-ajax.php?action=log_lead_file", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Object.fromEntries(googleData))
+      }).catch(console.error);
+
+      /* ---------------- LEAD API (ONLY IF YES) ---------------- */
+
+      let bookingCode = "";
+
+      if (investmentChoice === "yes") {
+
+        const leadPayload = {
+          first_name: nameParts.shift(),
+          last_name: nameParts.join(" "),
+          country_code: iti.getSelectedCountryData().dialCode,
+          phone: phoneInput.value.trim(),
+          email: email,
+          class_preference: classPref,
+          convenient_time: connectTime,
+          monthly_income: monthlyIncome
+        };
+
+        const response = await fetch(
+          "https://leadmanagement.tradewize.ae/api/create_initial_lead.php",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(leadPayload)
+          }
+        );
+
+        if (!response.ok) throw new Error("Lead API failed");
+
+        const result = await response.json();
+        bookingCode = result.booking_code || "";
+      }
+
+      loader.style.display = "none";
+
+      /* ---------------- FINAL FLOW ---------------- */
+
+      if (investmentChoice === "yes") {
+        window.location.href = bookingCode
+          ? `/thankyou?code=${bookingCode}`
+          : "/thankyou";
+      } else {
+
+        bootstrap.Modal.getInstance(
+          document.getElementById("leadFormModal")
+        ).hide();
+
+        setTimeout(() => {
+          new bootstrap.Modal(
+            document.getElementById("thankYouModal")
+          ).show();
+        }, 300);
+      }
+
+    } catch (err) {
+      console.error(err);
+      loader.style.display = "none";
+      alert("Submission failed. Please try again.");
+    }
+
+  });
 
 });
 document.querySelectorAll('.video-card').forEach(card => {
