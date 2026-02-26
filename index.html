@@ -14,18 +14,199 @@ href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.
 </head>
 <body>
 
+<!-- ============================================================
+     ██  MEDIA CONFIG — Change ALL image & video paths here  ██
+     ██  These apply site-wide automatically via JavaScript.  ██
+     ============================================================ -->
+<script>
+const MEDIA = {
+
+    // ── Header ───────────────────────────────────────────────
+    LOGO:                           "images/logo.jpg",
+
+    // ── Hero Banner ──────────────────────────────────────────
+    BANNER_DESKTOP:                 "images/Banner-Web.png",
+    BANNER_MOBILE:                  "images/Banner-Mob-1.png",
+
+    // ── Key Figures ──────────────────────────────────────────
+    KEY_FIGURES_DESKTOP:            "images/Frame-Desktop1.png",
+    KEY_FIGURES_MOBILE:             "images/keyfig-mob.png",
+
+    // ── Testimonials ─────────────────────────────────────────
+    TESTIMONIALS_TITLE_DESKTOP:     "images/testimonials-title-desktop.png",
+    TESTIMONIALS_TITLE_MOBILE:      "images/testimonials-title-mobile.png",
+    VIDEO_MAIN:                     "videos/main.mp4",
+    VIDEO_THUMB_1:                  "images/v1.png",
+    VIDEO_THUMB_2:                  "images/v2.png",
+    VIDEO_THUMB_3:                  "images/v3.png",
+    VIDEO_THUMB_4:                  "images/v4.png",
+
+    // ── Personalised ─────────────────────────────────────────
+    PERSONAL_TITLE_DESKTOP:         "images/personal-title-desktop.png",
+    PERSONAL_TITLE_MOBILE:          "images/personal-title-mobile-1.png",
+    PERSONAL_CONTENT_DESKTOP:       "images/personal-content-desktop-1.png",
+    PERSONAL_CONTENT_MOBILE:        "images/personal-content-mobile-1.png",
+
+    // ── Reviews Section ──────────────────────────────────────
+    REVIEWS_TITLE_DESKTOP:          "images/reviews-title.png",
+    REVIEWS_TITLE_MOBILE:           "images/reviews-title-mob.png",
+    REVIEWS_DESKTOP: [
+        "images/reviews/desktop/card1.png",   // card 1
+        "images/reviews/desktop/card2.png",   // card 2
+        "images/reviews/desktop/card3.png",   // card 3
+        "images/reviews/desktop/card4.png",   // card 4
+        "images/reviews/desktop/card5.png",   // card 5
+        "images/reviews/desktop/card6.png",   // card 6
+        "images/reviews/desktop/card7.png",   // card 7
+        "images/reviews/desktop/card8.png",   // card 8
+        "images/reviews/desktop/card9.png",   // card 9
+        "images/reviews/desktop/card10.png",  // card 10
+        "images/reviews/desktop/card11.png",  // card 11
+        "images/reviews/desktop/card12.png",  // card 12
+        "images/reviews/desktop/card13.png",  // card 13
+        "images/reviews/desktop/card14.png",  // card 14
+        "images/reviews/desktop/card15.png",  // card 15
+    ],
+    REVIEWS_MOBILE: [
+        "images/reviews/mobile/card1.png",
+        "images/reviews/mobile/card2.png",
+        "images/reviews/mobile/card3.png",
+        "images/reviews/mobile/card4.png",
+        "images/reviews/mobile/card5.png",
+        "images/reviews/mobile/card6.png",
+        "images/reviews/mobile/card7.png",
+        "images/reviews/mobile/card8.png",
+        "images/reviews/mobile/card9.png",
+        "images/reviews/mobile/card10.png",
+        "images/reviews/mobile/card11.png",
+        "images/reviews/mobile/card12.png",
+        "images/reviews/mobile/card13.png",
+        "images/reviews/mobile/card14.png",
+        "images/reviews/mobile/card15.png",
+    ],
+
+    // ── Journey ──────────────────────────────────────────────
+    JOURNEY_TITLE_DESKTOP:          "images/journey-title-desktop.png",
+    JOURNEY_TITLE_MOBILE:           "images/journey-title-mobile.png",
+    JOURNEY_CARD_1:                 "images/journey-card-1.png",
+    JOURNEY_CARD_2:                 "images/journey-card-2.png",
+
+    // ── Google Reviews ───────────────────────────────────────
+    GOOGLE_REVIEWS_TITLE_DESKTOP:   "images/google-reviews-title.png",
+    GOOGLE_REVIEWS_TITLE_MOBILE:    "images/google-reviews-title-mob.png",
+    GOOGLE_REVIEWS_DESKTOP: [
+        "images/google-reviews/desktop/card1.png",
+        "images/google-reviews/desktop/card2.png",
+        "images/google-reviews/desktop/card3.png",
+        "images/google-reviews/desktop/card4.png",
+        "images/google-reviews/desktop/card5.png",
+        "images/google-reviews/desktop/card6.png",
+        "images/google-reviews/desktop/card7.png",
+        "images/google-reviews/desktop/card8.png",
+        "images/google-reviews/desktop/card9.png",
+        "images/google-reviews/desktop/card10.png",
+        "images/google-reviews/desktop/card11.png",
+        "images/google-reviews/desktop/card12.png",
+    ],
+    GOOGLE_REVIEWS_MOBILE: [
+        "images/google-reviews/mobile/card1.png",
+        "images/google-reviews/mobile/card2.png",
+        "images/google-reviews/mobile/card3.png",
+        "images/google-reviews/mobile/card4.png",
+        "images/google-reviews/mobile/card5.png",
+        "images/google-reviews/mobile/card6.png",
+        "images/google-reviews/mobile/card7.png",
+        "images/google-reviews/mobile/card8.png",
+        "images/google-reviews/mobile/card9.png",
+        "images/google-reviews/mobile/card10.png",
+        "images/google-reviews/mobile/card11.png",
+        "images/google-reviews/mobile/card12.png",
+    ],
+
+    // ── Mentor ───────────────────────────────────────────────
+    MENTOR_DESKTOP:                 "images/mentor-desktop.png",
+    MENTOR_MOBILE:                  "images/mentor-mobile.png",
+
+    // ── FAQ ──────────────────────────────────────────────────
+    FAQ_TITLE_DESKTOP:              "images/faq-title-desktop.png",
+    FAQ_TITLE_MOBILE:               "images/faq-title-mobile.png",
+    VIDEO_FAQ:                      "videos/faq-video.mp4",
+    FAQ_QUESTIONS_DESKTOP: [
+        "images/faq/desktop/q1.png",
+        "images/faq/desktop/q2.png",
+        "images/faq/desktop/q3.png",
+        "images/faq/desktop/q4.png",
+        "images/faq/desktop/q5.png",
+        "images/faq/desktop/q6.png",
+        "images/faq/desktop/q7.png",
+        "images/faq/desktop/q8.png",
+    ],
+    FAQ_QUESTIONS_MOBILE: [
+        "images/faq/mobile/q1.png",
+        "images/faq/mobile/q2.png",
+        "images/faq/mobile/q3.png",
+        "images/faq/mobile/q4.png",
+        "images/faq/mobile/q5.png",
+        "images/faq/mobile/q6.png",
+        "images/faq/mobile/q7.png",
+        "images/faq/mobile/q8.png",
+    ],
+    FAQ_ANSWERS_DESKTOP: [
+        "images/faq/desktop/a1.png",
+        "images/faq/desktop/a2.png",
+        "images/faq/desktop/a3.png",
+        "images/faq/desktop/a4.png",
+        "images/faq/desktop/a5.png",
+        "images/faq/desktop/a6.png",
+        "images/faq/desktop/a7.png",
+        "images/faq/desktop/a8.png",
+    ],
+    FAQ_ANSWERS_MOBILE: [
+        "images/faq/mobile/a1.png",
+        "images/faq/mobile/a2.png",
+        "images/faq/mobile/a3.png",
+        "images/faq/mobile/a4.png",
+        "images/faq/mobile/a5.png",
+        "images/faq/mobile/a6.png",
+        "images/faq/mobile/a7.png",
+        "images/faq/mobile/a8.png",
+    ],
+
+    // ── Gallery ──────────────────────────────────────────────
+    GALLERY: [
+        "images/gallery1.jpg",
+        "images/gallery2.jpeg",
+        "images/gallery3.jpg",
+        "images/gallery4.jpeg",
+        "images/gallery5.jpeg",
+        "images/gallery6.jpeg",
+        "images/gallery7.jpg",
+        "images/gallery8.jpeg",
+        "images/gallery9.jpg",
+        "images/gallery10.jpeg",
+        "images/gallery11.jpeg",
+    ],
+
+    // ── Footer ───────────────────────────────────────────────
+    FOOTER_DESKTOP:                 "images/footer-desktop.png",
+    FOOTER_MOBILE:                  "images/footer-mobile.png",
+};
+</script>
+
+
+
 <!-- ================= HEADER ================= -->
 <header class="top-header">
     <div class="container">
-        <img src="images/logo.jpg" alt="Logo" class="logo">
+        <img alt="Logo" class="logo" data-key="LOGO">
     </div>
 </header>
 
 <!-- ================= HERO ================= -->
 <section class="hero">
     <picture>
-        <source media="(max-width:768px)" srcset="images/Banner-Mob-1.png">
-        <img src="images/Banner-Web.png" alt="Hero Banner">
+        <source media="(max-width:768px)" data-key="BANNER_MOBILE">
+        <img alt="Hero Banner" data-key="BANNER_DESKTOP">
     </picture>
     <button class="hero-btn" data-bs-toggle="modal" data-bs-target="#leadFormModal">Learn More</button>
 </section>
@@ -33,8 +214,8 @@ href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.
 <!-- ================= KEY FIGURES ================= -->
 <section class="key-figures">
     <picture>
-        <source media="(max-width:768px)" srcset="images/keyfig-mob.png">
-        <img src="images/Frame-Desktop1.png" alt="Key Figures">
+        <source media="(max-width:768px)" data-key="KEY_FIGURES_MOBILE">
+        <img alt="Key Figures" data-key="KEY_FIGURES_DESKTOP">
     </picture>
 </section>
 
@@ -42,14 +223,14 @@ href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.
 <section class="testimonials">
     <div class="testimonial-title">
         <picture>
-            <source media="(max-width:768px)" srcset="images/testimonials-title-mobile.png">
-            <img src="images/testimonials-title-desktop.png" alt="Testimonials">
+            <source media="(max-width:768px)" data-key="TESTIMONIALS_TITLE_MOBILE">
+            <img alt="Testimonials" data-key="TESTIMONIALS_TITLE_DESKTOP">
         </picture>
     </div>
 
     <div class="main-video">
         <video controls>
-            <source src="videos/main.mp4" type="video/mp4">
+            <source data-key="VIDEO_MAIN" type="video/mp4">
         </video>
     </div>
 
@@ -57,7 +238,7 @@ href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.
 
         <!-- CARD 1 -->
         <div class="video-card" data-video="j3i3f63r8n">
-            <img src="images/v1.png" alt="Raman Painulli" class="video-thumb">
+            <img alt="Raman Painulli" class="video-thumb" data-key="VIDEO_THUMB_1">
             <div class="video-overlay"></div>
             <div class="play-icon">&#9658;</div>
             <div class="video-name">Raman Painulli</div>
@@ -65,7 +246,7 @@ href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.
 
         <!-- CARD 2 -->
         <div class="video-card" data-video="izym15ke1f">
-            <img src="images/v2.png" alt="Parthasarthy" class="video-thumb">
+            <img alt="Parthasarthy" class="video-thumb" data-key="VIDEO_THUMB_2">
             <div class="video-overlay"></div>
             <div class="play-icon">&#9658;</div>
             <div class="video-name">Parthasarthy</div>
@@ -73,7 +254,7 @@ href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.
 
         <!-- CARD 3 -->
         <div class="video-card" data-video="cob1higlyi">
-            <img src="images/v3.png" alt="Priyesh" class="video-thumb">
+            <img alt="Priyesh" class="video-thumb" data-key="VIDEO_THUMB_3">
             <div class="video-overlay"></div>
             <div class="play-icon">&#9658;</div>
             <div class="video-name">Priyesh</div>
@@ -81,7 +262,7 @@ href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.
 
         <!-- CARD 4 -->
         <div class="video-card" data-video="mvxxc7tegn">
-            <img src="images/v4.png" alt="Jacinto Sims" class="video-thumb">
+            <img alt="Jacinto Sims" class="video-thumb" data-key="VIDEO_THUMB_4">
             <div class="video-overlay"></div>
             <div class="play-icon">&#9658;</div>
             <div class="video-name">Jacinto Sims</div>
@@ -99,15 +280,15 @@ href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.
 <section class="personal-section">
     <div class="personal-title">
         <picture>
-            <source media="(max-width:768px)" srcset="images/personal-title-mobile-1.png">
-            <img src="images/personal-title-desktop.png" alt="">
+            <source media="(max-width:768px)" data-key="PERSONAL_TITLE_MOBILE">
+            <img alt="" data-key="PERSONAL_TITLE_DESKTOP">
         </picture>
     </div>
 
     <div class="personal-content">
         <picture>
-            <source media="(max-width:768px)" srcset="images/personal-content-mobile-1.png">
-            <img src="images/personal-content-desktop-1.png" alt="">
+            <source media="(max-width:768px)" data-key="PERSONAL_CONTENT_MOBILE">
+            <img alt="" data-key="PERSONAL_CONTENT_DESKTOP">
         </picture>
     </div>
 
@@ -122,8 +303,8 @@ href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.
     <!-- Title -->
     <div class="reviews-title">
         <picture>
-            <source media="(max-width:768px)" srcset="images/reviews-title-mob.png">
-            <img src="images/reviews-title.png" alt="Reviews Title">
+            <source media="(max-width:768px)" data-key="REVIEWS_TITLE_MOBILE">
+            <img alt="Reviews Title" data-key="REVIEWS_TITLE_DESKTOP">
         </picture>
     </div>
 
@@ -133,125 +314,123 @@ href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.
         <!-- CARD 1 -->
         <div class="review-card">
             <picture>
-                <source media="(max-width:768px)" srcset="images/reviews/mobile/card1.png">
-                <img src="images/reviews/desktop/card1.png" alt="">
+                <source media="(max-width:768px)">
+                <img alt="">
             </picture>
         </div>
 
         <!-- CARD 2 -->
         <div class="review-card">
             <picture>
-                <source media="(max-width:768px)" srcset="images/reviews/mobile/card2.png">
-                <img src="images/reviews/desktop/card2.png" alt="">
+                <source media="(max-width:768px)">
+                <img alt="">
             </picture>
         </div>
 
         <!-- CARD 3 -->
         <div class="review-card">
             <picture>
-                <source media="(max-width:768px)" srcset="images/reviews/mobile/card3.png">
-                <img src="images/reviews/desktop/card3.png" alt="">
+                <source media="(max-width:768px)">
+                <img alt="">
             </picture>
         </div>
 
         <!-- CARD 4 -->
         <div class="review-card">
             <picture>
-                <source media="(max-width:768px)" srcset="images/reviews/mobile/card4.png">
-                <img src="images/reviews/desktop/card4.png" alt="">
+                <source media="(max-width:768px)">
+                <img alt="">
             </picture>
         </div>
-
-        <!-- Continue same structure till CARD 15 -->
 
         <!-- CARD 5 -->
         <div class="review-card hidden">
             <picture>
-                <source media="(max-width:768px)" srcset="images/reviews/mobile/card5.png">
-                <img src="images/reviews/desktop/card5.png" alt="">
+                <source media="(max-width:768px)">
+                <img alt="">
             </picture>
         </div>
 
         <!-- CARD 6 -->
         <div class="review-card hidden">
             <picture>
-                <source media="(max-width:768px)" srcset="images/reviews/mobile/card6.png">
-                <img src="images/reviews/desktop/card6.png" alt="">
+                <source media="(max-width:768px)">
+                <img alt="">
             </picture>
         </div>
 
         <!-- CARD 7 -->
         <div class="review-card hidden">
             <picture>
-                <source media="(max-width:768px)" srcset="images/reviews/mobile/card7.png">
-                <img src="images/reviews/desktop/card7.png" alt="">
+                <source media="(max-width:768px)">
+                <img alt="">
             </picture>
         </div>
 
         <!-- CARD 8 -->
         <div class="review-card hidden">
             <picture>
-                <source media="(max-width:768px)" srcset="images/reviews/mobile/card8.png">
-                <img src="images/reviews/desktop/card8.png" alt="">
+                <source media="(max-width:768px)">
+                <img alt="">
             </picture>
-        </div> 
-        
+        </div>
+
         <!-- CARD 9 -->
         <div class="review-card hidden">
             <picture>
-                <source media="(max-width:768px)" srcset="images/reviews/mobile/card9.png">
-                <img src="images/reviews/desktop/card9.png" alt="">
+                <source media="(max-width:768px)">
+                <img alt="">
             </picture>
         </div>
 
         <!-- CARD 10 -->
         <div class="review-card hidden">
             <picture>
-                <source media="(max-width:768px)" srcset="images/reviews/mobile/card10.png">
-                <img src="images/reviews/desktop/card10.png" alt="">
+                <source media="(max-width:768px)">
+                <img alt="">
             </picture>
         </div>
 
         <!-- CARD 11 -->
         <div class="review-card hidden">
             <picture>
-                <source media="(max-width:768px)" srcset="images/reviews/mobile/card11.png">
-                <img src="images/reviews/desktop/card11.png" alt="">
+                <source media="(max-width:768px)">
+                <img alt="">
             </picture>
         </div>
 
         <!-- CARD 12 -->
         <div class="review-card hidden">
             <picture>
-                <source media="(max-width:768px)" srcset="images/reviews/mobile/card12.png">
-                <img src="images/reviews/desktop/card12.png" alt="">
+                <source media="(max-width:768px)">
+                <img alt="">
             </picture>
         </div>
 
         <!-- CARD 13 -->
         <div class="review-card hidden">
             <picture>
-                <source media="(max-width:768px)" srcset="images/reviews/mobile/card13.png">
-                <img src="images/reviews/desktop/card13.png" alt="">
+                <source media="(max-width:768px)">
+                <img alt="">
             </picture>
         </div>
 
         <!-- CARD 14 -->
         <div class="review-card hidden">
             <picture>
-                <source media="(max-width:768px)" srcset="images/reviews/mobile/card14.png">
-                <img src="images/reviews/desktop/card14.png" alt="">
+                <source media="(max-width:768px)">
+                <img alt="">
             </picture>
         </div>
 
         <!-- CARD 15 -->
         <div class="review-card hidden">
             <picture>
-                <source media="(max-width:768px)" srcset="images/reviews/mobile/card15.png">
-                <img src="images/reviews/desktop/card15.png" alt="">
+                <source media="(max-width:768px)">
+                <img alt="">
             </picture>
         </div>
-        
+
     </div>
 
     <!-- Buttons -->
@@ -266,17 +445,17 @@ href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.
 <section class="journey-section">
     <div class="journey-title">
         <picture>
-            <source media="(max-width:768px)" srcset="images/journey-title-mobile.png">
-            <img src="images/journey-title-desktop.png" alt="">
+            <source media="(max-width:768px)" data-key="JOURNEY_TITLE_MOBILE">
+            <img alt="" data-key="JOURNEY_TITLE_DESKTOP">
         </picture>
     </div>
 
     <div class="journey-cards">
         <div class="journey-card">
-            <img src="images/journey-card-1.png" alt="">
+            <img alt="" data-key="JOURNEY_CARD_1">
         </div>
         <div class="journey-card">
-            <img src="images/journey-card-2.png" alt="">
+            <img alt="" data-key="JOURNEY_CARD_2">
         </div>
     </div>
 </section>
@@ -287,8 +466,8 @@ href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.
     <!-- Title -->
     <div class="google-reviews-title">
         <picture>
-            <source media="(max-width:768px)" srcset="images/google-reviews-title-mob.png">
-            <img src="images/google-reviews-title.png" alt="Google Reviews Title">
+            <source media="(max-width:768px)" data-key="GOOGLE_REVIEWS_TITLE_MOBILE">
+            <img alt="Google Reviews Title" data-key="GOOGLE_REVIEWS_TITLE_DESKTOP">
         </picture>
     </div>
 
@@ -298,104 +477,99 @@ href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.
         <!-- CARD 1 -->
         <div class="google-review-card">
             <picture>
-                <source media="(max-width:768px)" srcset="images/google-reviews/mobile/card1.png">
-                <img src="images/google-reviews/desktop/card1.png" alt="">
+                <source media="(max-width:768px)">
+                <img alt="">
             </picture>
         </div>
 
         <!-- CARD 2 -->
         <div class="google-review-card">
             <picture>
-                <source media="(max-width:768px)" srcset="images/google-reviews/mobile/card2.png">
-                <img src="images/google-reviews/desktop/card2.png" alt="">
+                <source media="(max-width:768px)">
+                <img alt="">
             </picture>
         </div>
 
-         <!-- CARD 3 -->
+        <!-- CARD 3 -->
         <div class="google-review-card">
             <picture>
-                <source media="(max-width:768px)" srcset="images/google-reviews/mobile/card3.png">
-                <img src="images/google-reviews/desktop/card3.png" alt="">
+                <source media="(max-width:768px)">
+                <img alt="">
             </picture>
         </div>
 
         <!-- CARD 4 -->
         <div class="google-review-card">
             <picture>
-                <source media="(max-width:768px)" srcset="images/google-reviews/mobile/card4.png">
-                <img src="images/google-reviews/desktop/card4.png" alt="">
+                <source media="(max-width:768px)">
+                <img alt="">
             </picture>
         </div>
-
-        <!-- Continue same structure till CARD 15 -->
 
         <!-- CARD 5 -->
         <div class="google-review-card hidden">
             <picture>
-                <source media="(max-width:768px)" srcset="images/google-reviews/mobile/card5.png">
-                <img src="images/google-reviews/desktop/card5.png" alt="">
+                <source media="(max-width:768px)">
+                <img alt="">
             </picture>
         </div>
 
         <!-- CARD 6 -->
         <div class="google-review-card hidden">
             <picture>
-                <source media="(max-width:768px)" srcset="images/google-reviews/mobile/card6.png">
-                <img src="images/google-reviews/desktop/card6.png" alt="">
+                <source media="(max-width:768px)">
+                <img alt="">
             </picture>
         </div>
 
         <!-- CARD 7 -->
         <div class="google-review-card hidden">
             <picture>
-                <source media="(max-width:768px)" srcset="images/google-reviews/mobile/card7.png">
-                <img src="images/google-reviews/desktop/card7.png" alt="">
+                <source media="(max-width:768px)">
+                <img alt="">
             </picture>
         </div>
 
         <!-- CARD 8 -->
         <div class="google-review-card hidden">
             <picture>
-                <source media="(max-width:768px)" srcset="images/google-reviews/mobile/card8.png">
-                <img src="images/google-reviews/desktop/card8.png" alt="">
+                <source media="(max-width:768px)">
+                <img alt="">
             </picture>
-        </div> 
-        
+        </div>
+
         <!-- CARD 9 -->
         <div class="google-review-card hidden">
             <picture>
-                <source media="(max-width:768px)" srcset="images/google-reviews/mobile/card9.png">
-                <img src="images/google-reviews/desktop/card9.png" alt="">
+                <source media="(max-width:768px)">
+                <img alt="">
             </picture>
         </div>
 
         <!-- CARD 10 -->
         <div class="google-review-card hidden">
             <picture>
-                <source media="(max-width:768px)" srcset="images/google-reviews/mobile/card10.png">
-                <img src="images/google-reviews/desktop/card10.png" alt="">
+                <source media="(max-width:768px)">
+                <img alt="">
             </picture>
         </div>
 
         <!-- CARD 11 -->
         <div class="google-review-card hidden">
             <picture>
-                <source media="(max-width:768px)" srcset="images/google-reviews/mobile/card11.png">
-                <img src="images/google-reviews/desktop/card11.png" alt="">
+                <source media="(max-width:768px)">
+                <img alt="">
             </picture>
         </div>
 
         <!-- CARD 12 -->
         <div class="google-review-card hidden">
             <picture>
-                <source media="(max-width:768px)" srcset="images/google-reviews/mobile/card12.png">
-                <img src="images/google-reviews/desktop/card12.png" alt="">
+                <source media="(max-width:768px)">
+                <img alt="">
             </picture>
         </div>
 
-        <!-- Repeat same pattern till CARD 15 -->
-        <!-- Keep adding cards -->
-        
     </div>
 
     <!-- Buttons -->
@@ -410,8 +584,8 @@ href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.
 <section class="mentor-section">
     <div class="mentor-content">
         <picture>
-            <source media="(max-width:768px)" srcset="images/mentor-mobile.png">
-            <img src="images/mentor-desktop.png" alt="">
+            <source media="(max-width:768px)" data-key="MENTOR_MOBILE">
+            <img alt="" data-key="MENTOR_DESKTOP">
         </picture>
     </div>
 
@@ -426,8 +600,8 @@ href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.
     <!-- Title -->
     <div class="faq-title">
         <picture>
-            <source media="(max-width:768px)" srcset="images/faq-title-mobile.png">
-            <img src="images/faq-title-desktop.png" alt="FAQ Title">
+            <source media="(max-width:768px)" data-key="FAQ_TITLE_MOBILE">
+            <img alt="FAQ Title" data-key="FAQ_TITLE_DESKTOP">
         </picture>
     </div>
 
@@ -438,137 +612,136 @@ href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.
         <div class="faq-item">
             <div class="faq-question">
                 <picture>
-                    <source media="(max-width:768px)" srcset="images/faq/mobile/q1.png">
-                    <img src="images/faq/desktop/q1.png" alt="">
+                    <source media="(max-width:768px)">
+                    <img alt="">
                 </picture>
                 <span class="faq-toggle">+</span>
             </div>
             <div class="faq-answer">
                 <picture>
-                    <source media="(max-width:768px)" srcset="images/faq/mobile/a1.png">
-                    <img src="images/faq/desktop/a1.png" alt="">
+                    <source media="(max-width:768px)">
+                    <img alt="">
                 </picture>
             </div>
         </div>
-         <!-- FAQ ITEM 2 -->
+        <!-- FAQ ITEM 2 -->
         <div class="faq-item">
             <div class="faq-question">
                 <picture>
-                    <source media="(max-width:768px)" srcset="images/faq/mobile/q2.png">
-                    <img src="images/faq/desktop/q2.png" alt="">
+                    <source media="(max-width:768px)">
+                    <img alt="">
                 </picture>
                 <span class="faq-toggle">+</span>
             </div>
             <div class="faq-answer">
                 <picture>
-                    <source media="(max-width:768px)" srcset="images/faq/mobile/a2.png">
-                    <img src="images/faq/desktop/a2.png" alt="">
+                    <source media="(max-width:768px)">
+                    <img alt="">
                 </picture>
             </div>
         </div>
-         <!-- FAQ ITEM 3 -->
+        <!-- FAQ ITEM 3 -->
         <div class="faq-item">
             <div class="faq-question">
                 <picture>
-                    <source media="(max-width:768px)" srcset="images/faq/mobile/q3.png">
-                    <img src="images/faq/desktop/q3.png" alt="">
+                    <source media="(max-width:768px)">
+                    <img alt="">
                 </picture>
                 <span class="faq-toggle">+</span>
             </div>
             <div class="faq-answer">
                 <picture>
-                    <source media="(max-width:768px)" srcset="images/faq/mobile/a3.png">
-                    <img src="images/faq/desktop/a3.png" alt="">
+                    <source media="(max-width:768px)">
+                    <img alt="">
                 </picture>
             </div>
         </div>
-         <!-- FAQ ITEM 4 -->
+        <!-- FAQ ITEM 4 -->
         <div class="faq-item">
             <div class="faq-question">
                 <picture>
-                    <source media="(max-width:768px)" srcset="images/faq/mobile/q4.png">
-                    <img src="images/faq/desktop/q4.png" alt="">
+                    <source media="(max-width:768px)">
+                    <img alt="">
                 </picture>
                 <span class="faq-toggle">+</span>
             </div>
             <div class="faq-answer">
                 <picture>
-                    <source media="(max-width:768px)" srcset="images/faq/mobile/a4.png">
-                    <img src="images/faq/desktop/a4.png" alt="">
+                    <source media="(max-width:768px)">
+                    <img alt="">
                 </picture>
             </div>
         </div>
-         <!-- FAQ ITEM 5 -->
+        <!-- FAQ ITEM 5 -->
         <div class="faq-item">
             <div class="faq-question">
                 <picture>
-                    <source media="(max-width:768px)" srcset="images/faq/mobile/q5.png">
-                    <img src="images/faq/desktop/q5.png" alt="">
+                    <source media="(max-width:768px)">
+                    <img alt="">
                 </picture>
                 <span class="faq-toggle">+</span>
             </div>
             <div class="faq-answer">
                 <picture>
-                    <source media="(max-width:768px)" srcset="images/faq/mobile/a5.png">
-                    <img src="images/faq/desktop/a5.png" alt="">
+                    <source media="(max-width:768px)">
+                    <img alt="">
                 </picture>
             </div>
         </div>
-         <!-- FAQ ITEM 6 -->
+        <!-- FAQ ITEM 6 -->
         <div class="faq-item">
             <div class="faq-question">
                 <picture>
-                    <source media="(max-width:768px)" srcset="images/faq/mobile/q6.png">
-                    <img src="images/faq/desktop/q6.png" alt="">
+                    <source media="(max-width:768px)">
+                    <img alt="">
                 </picture>
                 <span class="faq-toggle">+</span>
             </div>
             <div class="faq-answer">
                 <picture>
-                    <source media="(max-width:768px)" srcset="images/faq/mobile/a6.png">
-                    <img src="images/faq/desktop/a6.png" alt="">
+                    <source media="(max-width:768px)">
+                    <img alt="">
                 </picture>
             </div>
         </div>
-         <!-- FAQ ITEM 7 -->
+        <!-- FAQ ITEM 7 -->
         <div class="faq-item">
             <div class="faq-question">
                 <picture>
-                    <source media="(max-width:768px)" srcset="images/faq/mobile/q7.png">
-                    <img src="images/faq/desktop/q7.png" alt="">
+                    <source media="(max-width:768px)">
+                    <img alt="">
                 </picture>
                 <span class="faq-toggle">+</span>
             </div>
             <div class="faq-answer">
                 <picture>
-                    <source media="(max-width:768px)" srcset="images/faq/mobile/a7.png">
-                    <img src="images/faq/desktop/a7.png" alt="">
+                    <source media="(max-width:768px)">
+                    <img alt="">
                 </picture>
             </div>
         </div>
-         <!-- FAQ ITEM 8 -->
+        <!-- FAQ ITEM 8 -->
         <div class="faq-item">
             <div class="faq-question">
                 <picture>
-                    <source media="(max-width:768px)" srcset="images/faq/mobile/q8.png">
-                    <img src="images/faq/desktop/q8.png" alt="">
+                    <source media="(max-width:768px)">
+                    <img alt="">
                 </picture>
                 <span class="faq-toggle">+</span>
             </div>
             <div class="faq-answer">
                 <picture>
-                    <source media="(max-width:768px)" srcset="images/faq/mobile/a8.png">
-                    <img src="images/faq/desktop/a8.png" alt="">
+                    <source media="(max-width:768px)">
+                    <img alt="">
                 </picture>
             </div>
         </div>
-        <!-- Repeat same structure for q2, q3, q4 ... -->
     </div>
 
     <!-- Video -->
     <div class="faq-video">
         <video controls>
-            <source src="videos/faq-video.mp4" type="video/mp4">
+            <source data-key="VIDEO_FAQ" type="video/mp4">
         </video>
     </div>
 
@@ -587,17 +760,17 @@ href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.
         <button class="gallery-btn prev">&#10094;</button>
 
         <div class="gallery-track">
-            <div class="gallery-card"><img src="images/gallery1.jpg"></div>
-            <div class="gallery-card"><img src="images/gallery2.jpeg"></div>
-            <div class="gallery-card"><img src="images/gallery3.jpg"></div>
-            <div class="gallery-card"><img src="images/gallery4.jpeg"></div>
-            <div class="gallery-card"><img src="images/gallery5.jpeg"></div>
-            <div class="gallery-card"><img src="images/gallery6.jpeg"></div>
-            <div class="gallery-card"><img src="images/gallery7.jpg"></div>
-            <div class="gallery-card"><img src="images/gallery8.jpeg"></div>
-            <div class="gallery-card"><img src="images/gallery9.jpg"></div>
-            <div class="gallery-card"><img src="images/gallery10.jpeg"></div>
-            <div class="gallery-card"><img src="images/gallery11.jpeg"></div>
+            <div class="gallery-card"><img alt="Gallery 1"></div>
+            <div class="gallery-card"><img alt="Gallery 2"></div>
+            <div class="gallery-card"><img alt="Gallery 3"></div>
+            <div class="gallery-card"><img alt="Gallery 4"></div>
+            <div class="gallery-card"><img alt="Gallery 5"></div>
+            <div class="gallery-card"><img alt="Gallery 6"></div>
+            <div class="gallery-card"><img alt="Gallery 7"></div>
+            <div class="gallery-card"><img alt="Gallery 8"></div>
+            <div class="gallery-card"><img alt="Gallery 9"></div>
+            <div class="gallery-card"><img alt="Gallery 10"></div>
+            <div class="gallery-card"><img alt="Gallery 11"></div>
         </div>
 
         <button class="gallery-btn next">&#10095;</button>
@@ -607,8 +780,8 @@ href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.
 <!-- ================= FOOTER ================= -->
 <footer class="site-footer">
     <picture>
-        <source media="(max-width:768px)" srcset="images/footer-mobile.png">
-        <img src="images/footer-desktop.png" alt="">
+        <source media="(max-width:768px)" data-key="FOOTER_MOBILE">
+        <img alt="" data-key="FOOTER_DESKTOP">
     </picture>
 </footer>
 
@@ -732,7 +905,7 @@ align-items:center;">
     <div class="modal-content text-center p-4">
       <h4 class="mb-3">Thank You!</h4>
       <p class="mb-4">
-        Thank you for your interest.  
+        Thank you for your interest.
         Our team will stay in touch with you.
       </p>
       <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
@@ -802,7 +975,7 @@ loadMoreBtn.addEventListener('click', () => {
             loadMoreBtn.textContent = "Less Reviews";
         }
 
-    } 
+    }
     // If all are visible → collapse back to first 4
     else {
 
@@ -1056,6 +1229,67 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 });
+// ================= APPLY MEDIA ASSETS FROM CONFIG =================
+function applyMediaAssets() {
+
+    // 1. Single-key <img data-key="..."> elements → set src
+    document.querySelectorAll('img[data-key]').forEach(el => {
+        const v = MEDIA[el.dataset.key];
+        if (v) el.src = v;
+    });
+
+    // 2. Single-key <source data-key="..."> elements
+    //    Inside <picture>  → set srcset
+    //    Inside <video>    → set src and reload
+    document.querySelectorAll('source[data-key]').forEach(el => {
+        const v = MEDIA[el.dataset.key];
+        if (!v) return;
+        if (el.closest('picture')) {
+            el.srcset = v;
+        } else {
+            el.src = v;
+            const vid = el.closest('video');
+            if (vid) vid.load();
+        }
+    });
+
+    // 3. Review cards — array-based (desktop img + mobile source)
+    document.querySelectorAll('.review-card').forEach((card, i) => {
+        const src = card.querySelector('source');
+        const img = card.querySelector('img');
+        if (src && MEDIA.REVIEWS_MOBILE[i])  src.srcset = MEDIA.REVIEWS_MOBILE[i];
+        if (img && MEDIA.REVIEWS_DESKTOP[i]) img.src    = MEDIA.REVIEWS_DESKTOP[i];
+    });
+
+    // 4. Google Review cards — array-based
+    document.querySelectorAll('.google-review-card').forEach((card, i) => {
+        const src = card.querySelector('source');
+        const img = card.querySelector('img');
+        if (src && MEDIA.GOOGLE_REVIEWS_MOBILE[i])  src.srcset = MEDIA.GOOGLE_REVIEWS_MOBILE[i];
+        if (img && MEDIA.GOOGLE_REVIEWS_DESKTOP[i]) img.src    = MEDIA.GOOGLE_REVIEWS_DESKTOP[i];
+    });
+
+    // 5. FAQ items — array-based (questions + answers)
+    document.querySelectorAll('.faq-item').forEach((item, i) => {
+        const qSrc = item.querySelector('.faq-question source');
+        const qImg = item.querySelector('.faq-question img');
+        const aSrc = item.querySelector('.faq-answer  source');
+        const aImg = item.querySelector('.faq-answer  img');
+        if (qSrc && MEDIA.FAQ_QUESTIONS_MOBILE[i])  qSrc.srcset = MEDIA.FAQ_QUESTIONS_MOBILE[i];
+        if (qImg && MEDIA.FAQ_QUESTIONS_DESKTOP[i]) qImg.src    = MEDIA.FAQ_QUESTIONS_DESKTOP[i];
+        if (aSrc && MEDIA.FAQ_ANSWERS_MOBILE[i])    aSrc.srcset = MEDIA.FAQ_ANSWERS_MOBILE[i];
+        if (aImg && MEDIA.FAQ_ANSWERS_DESKTOP[i])   aImg.src    = MEDIA.FAQ_ANSWERS_DESKTOP[i];
+    });
+
+    // 6. Gallery images — array-based
+    document.querySelectorAll('.gallery-card img').forEach((img, i) => {
+        if (MEDIA.GALLERY[i]) img.src = MEDIA.GALLERY[i];
+    });
+}
+
+document.addEventListener("DOMContentLoaded", applyMediaAssets);
+
+// ================= VIDEO CARDS =================
 document.querySelectorAll('.video-card').forEach(card => {
 
     card.addEventListener('click', function () {
