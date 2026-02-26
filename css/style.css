@@ -837,55 +837,60 @@ body {
     margin-bottom: 18px;
     border-radius: 10px;
     overflow: hidden;
-    padding: 0;                 /* IMPORTANT */
-    background: transparent;    /* no white block */
+    position: relative; /* needed for toggle positioning */
 }
 
 /* ---------- QUESTION ---------- */
 
 .faq-question {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
+    position: relative;
     cursor: pointer;
-    background: #ffffff;       /* grey only for question */
+    padding: 0;                 /* remove outer padding */
+    background: transparent;    /* remove white background */
 }
 
-/* Question Image */
-/* Question Image Control */
-.faq-question picture,
+/* Make question image full width */
+.faq-question picture {
+    width: 100%;
+    display: block;
+}
+
 .faq-question img {
-    width: auto;              /* don't stretch full */
-    max-width: 85%;           /* control visual size */
+    width: 100%;
     height: auto;
     display: block;
 }
 
-/* Toggle */
+/* Toggle icon */
 .faq-toggle {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
     font-size: 22px;
     font-weight: bold;
     color: #17235F;
-    margin-left: 15px;
+    pointer-events: none;
 }
 
 /* ---------- ANSWER ---------- */
 
 .faq-answer {
     display: none;
-    padding: 0;                 /* NO padding */
+    padding: 0;
     margin: 0;
-    background: transparent;    /* no white bg */
+    background: transparent;
 }
 
-/* Remove ALL max-width limits */
-.faq-answer picture,
+.faq-answer picture {
+    width: 100%;
+    display: block;
+}
+
 .faq-answer img {
     width: 100%;
-    max-width: 100%;
-    display: block;
     height: auto;
+    display: block;
 }
 
 /* ---------- VIDEO ---------- */
@@ -914,22 +919,26 @@ body {
 
 /* ================= MOBILE ================= */
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
+
+    .faq-section {
+        padding: 40px 0;
+    }
 
     .faq-title img {
         width: 95%;
         margin-bottom: 35px;
     }
 
+    /* KEEP NO PADDING HERE */
     .faq-question {
-        padding: 16px;
-    }
-
-    /* VERY IMPORTANT: No padding here */
-    .faq-answer {
         padding: 0;
     }
 
+    .faq-toggle {
+        right: 15px;
+        font-size: 20px;
+    }
 }
 /* ================= FOOTER ================= */
 
