@@ -802,13 +802,14 @@ const MEDIA = {
     </picture>
 </footer>
 
+<!-- LEAD FORM MODAL -->
 <div class="modal fade" id="leadFormModal" tabindex="-1" aria-labelledby="leadFormLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
 
       <div class="modal-header border-0">
         <h5 class="modal-title" id="leadFormLabel">Please Share Your Details</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
       <form id="studentForm" novalidate>
@@ -818,32 +819,49 @@ const MEDIA = {
             <!-- Full Name -->
             <div class="col-12">
               <label class="form-label">Full Name *</label>
-              <input type="text" class="form-control" name="fullName"
-                     pattern="[A-Za-z\s]+" required>
+              <input 
+                type="text"
+                id="fullName"
+                class="form-control"
+                name="fullName"
+                required
+              >
               <div class="invalid-feedback">
-                Please enter a valid name.
+                Please enter a valid full name (letters only).
               </div>
             </div>
 
             <!-- WhatsApp -->
             <div class="col-md-6">
               <label class="form-label">WhatsApp Number *</label>
-              <input type="tel" class="form-control"
-                     id="whatsappNumber"
-                     name="whatsappNumber"
-                     required>
-              <div class="invalid-feedback">
-                Please enter a valid WhatsApp number.
+
+              <!-- IMPORTANT: Wrapper for intl-tel-input -->
+              <div>
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="whatsappNumber"
+                  name="whatsappNumber"
+                  required
+                >
+                <div class="invalid-feedback">
+                  Please enter a valid WhatsApp number (minimum 9 digits).
+                </div>
               </div>
             </div>
 
             <!-- Email -->
             <div class="col-md-6">
               <label class="form-label">Email ID *</label>
-              <input type="email" class="form-control"
-                     name="emailId" required>
+              <input
+                type="email"
+                id="emailId"
+                class="form-control"
+                name="emailId"
+                required
+              >
               <div class="invalid-feedback">
-                Please enter a valid email.
+                Please enter a valid email address.
               </div>
             </div>
 
@@ -863,10 +881,14 @@ const MEDIA = {
             <!-- Convenient Time -->
             <div class="col-12">
               <label class="form-label">Convenient Time *</label>
-              <input type="text" class="form-control"
-                     name="connectTime" required>
+              <input
+                type="text"
+                class="form-control"
+                name="connectTime"
+                required
+              >
               <div class="invalid-feedback">
-                Please enter preferred time.
+                Please enter your preferred time.
               </div>
             </div>
 
@@ -875,8 +897,7 @@ const MEDIA = {
               <label class="form-label fw-bold">
                 I can comfortably make an investment of $2000 to improve my trading skills. *
               </label>
-              <select class="form-select"
-                      name="investmentConsent" required>
+              <select class="form-select" name="investmentConsent" required>
                 <option value="" selected disabled hidden>Select</option>
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
@@ -893,8 +914,7 @@ const MEDIA = {
           <button type="submit" class="btn btn-success px-4">
             Submit
           </button>
-          <button type="button" class="btn btn-secondary px-4"
-                  data-bs-dismiss="modal">
+          <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">
             Close
           </button>
         </div>
@@ -1102,50 +1122,103 @@ document.addEventListener("DOMContentLoaded", function () {
   const iti = window.intlTelInput(phoneInput, {
     initialCountry: "auto",
     geoIpLookup: function(callback) {
-      fetch("https://ipapi.co/json")
+        fetch("https://ipapi.co/json")
         .then(res => res.json())
         .then(data => callback(data.country_code))
         .catch(() => callback("us"));
     },
     separateDialCode: true,
     preferredCountries: ["ae","in","us","gb"],
-  });
+    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js",
+    nationalMode: false, // important
+    });
 
   phoneInput.addEventListener("input", function () {
-    this.value = this.value.replace(/[^0-9]/g, "");
-});
+        this.value = this.value.replace(/[^0-9]/g, "");
+    });
 
-  form.addEventListener("submit", async function (e) {
+ form.addEventListener("submit", async function (e) {
 
   e.preventDefault();
   e.stopPropagation();
 
-  // Always trigger Bootstrap validation UI first
   form.classList.add("was-validated");
 
   let isValid = true;
 
-  // Validate normal HTML fields
-  if (!form.checkValidity()) {
+  /* ===== FULL NAME VALIDATION ===== */
+  const fullNameInput = form.querySelector("[name='fullName']");
+  const nameValue = fullNameInput.value.trim();
+  const namePattern = /^[A-Za-z\s]+$/;
+
+  if (nameValue === "" || !namePattern.test(nameValue)) {
+    fullNameInput.classList.add("is-invalid");
     isValid = false;
+  } else {
+    fullNameInput.classList.remove("is-invalid");
   }
 
-    const rawNumber = phoneInput.value.trim();
-    const onlyDigits = /^[0-9]+$/;
+  /* ===== EMAIL VALIDATION ===== */
+  const emailInput = form.querySelector("[name='emailId']");
+  const emailValue = emailInput.value.trim();
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (
-    rawNumber === "" ||              // Empty check
-    !onlyDigits.test(rawNumber) ||   // Only numbers check
-    rawNumber.length < 9 ||          // Min length check
-    !iti.isValidNumber()             // Intl validation
-    ) {
-    phoneInput.classList.add("is-invalid");
+  if (emailValue === "" || !emailPattern.test(emailValue)) {
+    emailInput.classList.add("is-invalid");
     isValid = false;
-    } else {
-    phoneInput.classList.remove("is-invalid");
-    }
+  } else {
+    emailInput.classList.remove("is-invalid");
+  }
+
+ /* ===== PHONE VALIDATION ===== */
+const fullNumber = iti.getNumber(); // full international format
+const rawNumber = phoneInput.value.trim();
+const onlyDigits = /^[0-9]+$/;
+
+if (
+  rawNumber === "" ||
+  !onlyDigits.test(rawNumber) ||
+  fullNumber.length < 9 ||  
+  !iti.isValidNumber()
+) {
+  phoneInput.classList.add("is-invalid");
+  isValid = false;
+} else {
+  phoneInput.classList.remove("is-invalid");
+}
+
+  /* ===== CLASS PREFERENCE ===== */
+  const classPrefInput = form.querySelector("[name='classPref']");
+  if (!classPrefInput.value) {
+    classPrefInput.classList.add("is-invalid");
+    isValid = false;
+  } else {
+    classPrefInput.classList.remove("is-invalid");
+  }
+
+  /* ===== CONNECT TIME ===== */
+  const connectTimeInput = form.querySelector("[name='connectTime']");
+  if (connectTimeInput.value.trim() === "") {
+    connectTimeInput.classList.add("is-invalid");
+    isValid = false;
+  } else {
+    connectTimeInput.classList.remove("is-invalid");
+  }
+
+  /* ===== INVESTMENT CONSENT ===== */
+  const investmentInput = form.querySelector("[name='investmentConsent']");
+  if (!investmentInput.value) {
+    investmentInput.classList.add("is-invalid");
+    isValid = false;
+  } else {
+    investmentInput.classList.remove("is-invalid");
+  }
 
   if (!isValid) return;
+
+  /* ===== PREVENT DOUBLE SUBMIT ===== */
+  const submitBtn = form.querySelector("button[type='submit']");
+  submitBtn.disabled = true;
 
   loader.style.display = "flex";
 
@@ -1153,15 +1226,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const formData = new FormData(form);
 
-    const fullName = formData.get("fullName");
-    const email = formData.get("emailId");
-    const classPref = formData.get("classPref");
-    const connectTime = formData.get("connectTime");
-    const investmentChoice = formData.get("investmentConsent");
+    const fullName = nameValue;
+    const email = emailValue;
+    const classPref = classPrefInput.value;
+    const connectTime = connectTimeInput.value.trim();
+    const investmentChoice = investmentInput.value;
     const whatsappFull = iti.getNumber();
     const pageUrl = window.location.href;
 
-    const nameParts = fullName.trim().split(" ");
+    const nameParts = fullName.split(" ");
     const monthlyIncome = 0;
 
     /* GOOGLE SHEET */
@@ -1184,8 +1257,6 @@ document.addEventListener("DOMContentLoaded", function () {
       body: googleData
     }).catch(console.error);
 
-    /* WP LOGGER */
-
     fetch("https://trading.tradewize.ae/wp-admin/admin-ajax.php?action=log_lead_file", {
       method: "POST",
       body: googleData
@@ -1201,7 +1272,7 @@ document.addEventListener("DOMContentLoaded", function () {
         first_name: nameParts.shift(),
         last_name: nameParts.join(" "),
         country_code: iti.getSelectedCountryData().dialCode,
-        phone: phoneInput.value.trim(),
+        phone: rawNumber,
         email: email,
         class_preference: classPref,
         convenient_time: connectTime,
@@ -1225,8 +1296,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     loader.style.display = "none";
 
-    /* FINAL FLOW */
-
     if (investmentChoice === "yes") {
       window.location.href = bookingCode
         ? `/thankyou?code=${bookingCode}`
@@ -1247,6 +1316,7 @@ document.addEventListener("DOMContentLoaded", function () {
   } catch (err) {
     console.error(err);
     loader.style.display = "none";
+    submitBtn.disabled = false;
     alert("Submission failed. Please try again.");
   }
 

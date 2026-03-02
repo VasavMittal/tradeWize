@@ -1037,3 +1037,42 @@ body {
         padding: 20px;
     }
 }
+.iti {
+  width: 100%;
+}
+
+.iti input {
+  width: 100%;
+}
+
+.iti input.is-invalid {
+  border-color: #dc3545;
+}
+
+.invalid-feedback {
+  display: none;
+}
+
+.form-control.is-invalid ~ .invalid-feedback,
+.form-select.is-invalid ~ .invalid-feedback {
+  display: block;
+}
+
+/* ===== FORCE BOOTSTRAP VALIDATION COLORS ===== */
+
+/* Default */
+.form-control {
+  border-color: #ced4da !important;
+}
+
+/* Invalid (RED) */
+.form-control.is-invalid {
+  border-color: #dc3545 !important;
+  background-image: none !important;
+}
+
+/* Valid (GREEN only when added manually) */
+.form-control.is-valid {
+  border-color: #198754 !important;
+  background-image: none !important;
+}
