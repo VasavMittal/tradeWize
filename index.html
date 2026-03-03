@@ -1239,10 +1239,10 @@ if (
       body: googleData
     }).catch(console.error);
 
-    fetch("https://trading.tradewize.ae/wp-admin/admin-ajax.php?action=log_lead_file", {
-      method: "POST",
-      body: googleData
-    }).catch(console.error);
+    // fetch("https://trading.tradewize.ae/wp-admin/admin-ajax.php?action=log_lead_file", {
+    //   method: "POST",
+    //   body: googleData
+    // }).catch(console.error);
 
     /* LEAD API (ONLY IF YES) */
 
@@ -1270,7 +1270,7 @@ if (
         }
       );
 
-      if (!response.ok) throw new Error("Lead API failed");
+     if (!response.ok) throw new Error("Lead API failed");
 
       const result = await response.json();
       bookingCode = result.booking_code || "";
@@ -1280,8 +1280,8 @@ if (
 
     if (investmentChoice === "yes") {
       window.location.href = bookingCode
-        ? `/thankyou?code=${bookingCode}`
-        : "/thankyou";
+        ? `thankyou.html?code=${bookingCode}`
+        : "thankyou.html";
     } else {
 
       bootstrap.Modal.getInstance(

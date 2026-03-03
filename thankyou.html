@@ -1,0 +1,80 @@
+<div id="welcome-message" class="text-center mb-4" style="text-align:center">
+        <h2 class="fw-normal mb-1" style="margin-bottom:.5rem">Thank you for your submission!</h2>
+        <p class="lead text-muted">Kindly book a meeting with us using the calendar below.</p>
+</div>
+<iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3uHwy-vUX86WhzLYoYiyoxMEhbjtO8aqmPl-em4QCZZW35bRLyBnRHWVm8CYfuiOfosUosJqS4?gv=true" style="border: 0;display:none;" width="100%" height="600" frameborder="0" ></iframe>
+<div id="booking-iframe-container" style="text-align:center;">
+    <div class="spinner-container">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading Calendar...</span>
+        </div>
+    </div>
+</div>
+<script>
+(function() {
+    // #############################################################
+    // ## CONFIGURATION
+    // #############################################################
+
+    // The base URL of your lead portal
+    const LEAD_PORTAL_URL = "https://leadmanagement.tradewize.ae";
+    
+    // #############################################################
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const bookingCode = urlParams.get('code');
+
+    const welcomeDiv = document.getElementById('welcome-message');
+    const iframeContainer = document.getElementById('booking-iframe-container');
+
+    if (!bookingCode) {
+        
+        iframeContainer.style.display = 'none';
+        return;
+    }
+
+    // --- Step 1: Personalize the Welcome Message ---
+    // Fetch the lead's name from the new API
+    fetch(`${LEAD_PORTAL_URL}/api/get_lead_name.php?code=${bookingCode}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.first_name) {
+                welcomeDiv.querySelector('h2').textContent = `Thank you for your submission, ${data.first_name}!`;
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching lead name:', error);
+        });
+
+    // --- Step 2: Create and display the booking calendar iframe ---
+    let hasIframeLoaded = false;
+    const iframe = document.createElement('iframe');
+    iframe.src = `${LEAD_PORTAL_URL}/book_meeting.php?code=${bookingCode}`;
+    iframe.style.width = '100%';
+    iframe.style.height = '865px';
+    iframe.style.border = 'none';
+    iframe.style.borderRadius = '0.5rem';
+
+    // Replace the spinner with the fully loaded iframe
+    iframe.onload = () => {
+        if (hasIframeLoaded) {
+            return; // If it has already loaded, do nothing more.
+        }
+        hasIframeLoaded = true;
+        iframe.style.display = 'block';
+        iframeContainer.innerHTML = ''; // Clear spinner
+        iframeContainer.appendChild(iframe);
+    };
+    
+    // In case of a loading error
+    iframe.onerror = () => {
+        iframeContainer.innerHTML = '';
+    };
+    
+    // Start loading the iframe in the background
+    // To avoid issues, we temporarily add it to the body hidden, then move it when loaded.
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+    
+})();
+</script>
